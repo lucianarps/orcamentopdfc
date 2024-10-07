@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Orçamento</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .input-group input {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        /* Estilos da tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        thead {
+            background-color: #c4bfb9;
+            color: #333;
+        }
+
+        thead th {
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        table input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Larguras fixas para garantir alinhamento */
+        th, td {
+            width: 25%;
+            word-wrap: break-word; /* Quebra o texto em várias linhas se necessário */
+        }
+
+        /* Estilo do botão de adicionar itens */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #45A049;
+        }
+
+        /* Estilo do botão de WhatsApp */
+        #send-whatsapp {
+            background-color: #25d366; /* Verde WhatsApp */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            float: right;
+        }
+
+        #send-whatsapp:hover {
+            background-color: #20b857;
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .input-row input[type="text"], .input-row input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Orçamento Papel de Flor Conviteria</h2>
+        <form id="order-form">
+            <div class="input-group">
+                <label for="couple-name">Nome:</label>
+                <input type="text" id="couple-name" name="couple-name" required>
+            </div>
+            <div class="input-group">
+                <label for="wedding-date">Data do Evento:</label>
+                <input type="date" id="wedding-date" name="wedding-date" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="whatsapp">WhatsApp (com código de país):</label>
+                <input type="text" id="whatsapp" name="whatsapp" required>
+            </div>
+        </form>
+    </div>
+
+      <!-- Tabelas de categorias -->
+    <h3>PAPELARIA PRÉ-WEDDING</h3>
+    <table id="budget-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quant.</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Convite Tradicioal Brasil (Convite, individual e envelope)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Cartões complementares (RSVP, Informações e outros) / Cada</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Logo / Brasão / Monograma (avulso)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Tags Nome do Convidado</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Convite Digital / Save the Date -  Interativo (Links para Local, site e RSVP)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Convite / Save the Date - Digital Animado</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Save the Date (Simples)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>CONVITES ESPECIAIS</h3>
+    <table id="budget-table-special">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quant.</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Manual de Padrinhos</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Manual de Madrinhas</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Manual de Casal</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Manual digital </td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Convite Padrinhos</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Convite Madinhas</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Convite Casal</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Convites adicionais (Pajem, Dama, Pastor, Avós, Pais) / Cada</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Caixa de Padrinhos Solteiro/td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Caixa de Padrinhos Casal/td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <h3>PAPELARIA DO DIA</h3>
+    <table id="budget-table-day">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quant.</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Par de  Votos</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Cone para Pétalas / Doces (Cada)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Programa de Cerimônia</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Lágrimas de Alegria (Simples)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Lágrimas de Alegria (Envelope)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Ventarola</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Placa de Boas Vindas</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Placas de Sinalização (Banheiros, Estação de repelente, Outros) / Cada</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Menu</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Menu Bar</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Pista de Dança</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Chinelo</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Vale conforto</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Kit Operação Lua de Mel</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Tag lembrança</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sacola Doces</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Kit Toalete (Inclui lista de produtos e fornecedores)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Livro de Colorir para Crianças</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <h3>PAPELARIA DESTINATION WEDDING</h3>
+    <table id="budget-table-destination">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quant.</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cartão de Boas Vindas</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Tag lembrancinha</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Rótulos (Cada)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Aviso para Porta (Arte e arquivo de corte)</td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Cartão de Informações Locais </td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+            <tr>
+                <td>Cartão de Agradecimento </td>
+                <td><input type="number" class="quantity" value="1" min="1"></td>
+                <td><input type="checkbox" class="item-checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Nova categoria para Novos Itens -->
+    <h3>NOVOS ITENS</h3>
+    <table id="new-items-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quant.</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Novos itens adicionados pelo usuário -->
+        </tbody>
+    </table>
+
+    <!-- Campo para adicionar novos itens -->
+<div class="input-row">
+    <input type="text" id="new-item" placeholder="Descrição do item" style="width: 70%;">
+    <input type="number" id="new-quantity" min="1" placeholder="Quantidade" style="width: 20%;">
+    <button type="button" onclick="addItem()">Adicionar</button>
+</div>
+
+<button id="send-whatsapp" onclick="sendWhatsApp()">Solicitar Orçamento</button>
+
+<script>
+    function addItem() {
+        var itemDesc = document.getElementById('new-item').value;
+        var quantity = document.getElementById('new-quantity').value;
+
+        if (itemDesc && quantity) {
+            var table = document.getElementById('new-items-table').querySelector('tbody');
+            
+            // Corrigindo para garantir que o tbody exista
+            if (!table) {
+                table = document.createElement('tbody');
+                document.getElementById('new-items-table').appendChild(table);
+            }
+
+            var newRow = table.insertRow();
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = 'Novo';  // Código fixo como 'Novo'
+            cell2.innerHTML = itemDesc;
+            cell3.innerHTML = '<input type="number" value="' + quantity + '" min="1">';
+            cell4.innerHTML = '<input type="checkbox" class="item-checkbox">';
+
+            document.getElementById('new-item').value = '';
+            document.getElementById('new-quantity').value = '';
+        } else {
+            alert("Por favor, insira a descrição do item e a quantidade.");
+        }
+    }
+
+    function sendWhatsApp() {
+        const coupleName = document.getElementById("couple-name").value;
+        const weddingDate = document.getElementById("wedding-date").value;
+        const email = document.getElementById("email").value;
+        const clientWhatsApp = document.getElementById("whatsapp").value;
+
+        let selectedItems = [];
+        
+        // Coletando os itens selecionados nas tabelas existentes e nos novos itens
+        document.querySelectorAll('tbody tr').forEach(row => {
+            const checkbox = row.querySelector('.item-checkbox');
+            if (checkbox && checkbox.checked) {
+                const description = row.cells[1].innerText;
+                const quantityInput = row.querySelector('input[type="number"]');
+                const quantity = quantityInput ? quantityInput.value : 'N/A';
+                selectedItems.push(`${description} - Quantidade: ${quantity}`);
+            }
+        });
+
+        const message = `Orçamento:%0ANomes do Casal: ${coupleName}%0AData do Casamento: ${weddingDate}%0AEmail: ${email}%0AWhatsApp: ${clientWhatsApp}%0AItens Selecionados:%0A${selectedItems.join('%0A')}`;
+
+        const yourWhatsAppNumber = "14375221583"; // Substitua pelo seu número
+        const whatsappURL1 = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
+        const whatsappURL2 = `https://wa.me/${clientWhatsApp}?text=${message}`;
+
+        window.open(whatsappURL1, '_blank');
+        window.open(whatsappURL2, '_blank');
+    }
+</script>
