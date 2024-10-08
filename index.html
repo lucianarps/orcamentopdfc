@@ -451,6 +451,10 @@
 <button id="send-whatsapp" onclick="sendWhatsApp()" style="background-color: rgb(9, 183, 21); color: white; position: absolute; right: 10px;">Solicitar Orçamento</button>
 
 <script>
+    // Função para redirecionar ao site especificado
+    function returnToSite() {
+        window.location.href = "https://papeldeflorconviteria.framer.website/";
+    }
     function addItem() {
         var itemDesc = document.getElementById('new-item').value;
         var quantity = document.getElementById('new-quantity').value;
